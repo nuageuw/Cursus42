@@ -1,0 +1,5 @@
+*.o
+*.a
+tuto
+.vscode
+minishell

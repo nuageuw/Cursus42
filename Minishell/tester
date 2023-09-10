@@ -1,0 +1,53 @@
+cd double args (should return 1)
+cd ../../../../../
+cat < a > b
+cd /
+cd -
+
+++ echo -nnaaaa
+++ echo -nnnnn
+++ echo -n -n -n -n -n -n
+++ echo -n-n-n-n-n
+++ cd
+++ export
+++ export var ; env | grep var ; export | grep var
+++ export $ARG
+++ exit | exit
+++ exit 1 2 3
+++ exit 178036478945602741
+++ << "<<" cat
+++ << "stop" cat
+++ << stop cat
+++ ""
+++ cat << l < file
+++ << l < file
+++ | | | |
+++ cat | cat > file
+++ cmd < file < file1
+++ echo "<3" >> "<3"
+++ echo "" text
+++ cat < "file"
+++ cat | cat | ls
+++ cat > f1 | cat > f2 | ls
+++ unset arg1 arg2
+++ echo < Makefile bonjour
+++ export HELLO=123 A- WORLD=456 (check exit code)
+++ echo txt > $var
+++ ctl + D in heredoc
+++ echo bonsoir > file | cat < file
+++ ls > f | ls > f1
+++ ls | ls | ls | ls | ls | ls | ls | ls
+++ export var=salut > file
+++ ex"it"
+++ exit | ls
+++ "'ec'ho" salut
+++ echo salut "" les "" ami
+++ grep echo < tests.txt > file2
+++ > file
+++ grep < file a
+++ cat > file1  < infile1  >>file2 <infile2
+++ echo a > file1 | grep a
+++ grep a
+++ ./minishell
+++ cat << $HOME
+

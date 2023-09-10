@@ -1,0 +1,6 @@
+*.o
+fractol
+.DS_Store
+*.a
+mlx_linux
+LMakefile
