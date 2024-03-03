@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:40:05 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 16:40:07 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/02 20:51:04 by reshivii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
     Fixed const a2 = Fixed(c.getY() - b.getY()) * Fixed(point.getX() - b.getX()) - Fixed(c.getX() - b.getX()) * Fixed(point.getY() - b.getY());
     Fixed const a3 = Fixed(a.getY() - c.getY()) * Fixed(point.getX() - c.getX()) - Fixed(a.getX() - c.getX()) * Fixed(point.getY() - c.getY());
 
-    return (a1 >= Fixed(0) & &a2 >= Fixed(0) & &a3 >= Fixed(0)) || (a1 <= Fixed(0) & &a2 <= Fixed(0) && a3 <= Fixed(0));
+    return (a1 >= Fixed(0) && a2 >= Fixed(0) && a3 >= Fixed(0)) || (a1 <= Fixed(0) && a2 <= Fixed(0) && a3 <= Fixed(0));
 }

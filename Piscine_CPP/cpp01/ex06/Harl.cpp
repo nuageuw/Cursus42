@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:25:14 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/27 13:52:31 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/02 20:35:39 by reshivii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,16 @@ void	Harl::complain(std::string level)
         }
         if (found) {
             switch (i) {
-                case 0: // DEBUG
+                case 0:
                     _debug();
                     break;
-                case 1: // INFO
+                case 1:
                     _info();
                     break;
-                case 2: // WARNING
+                case 2:
                    _warning();
                     break;
-                case 3: // ERROR
+                case 3:
                     _error();
                     break;
                 default:

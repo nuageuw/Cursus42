@@ -3,27 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:45:54 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 16:02:09 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:53:12 by reshivii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
+#include <iostream>
 
 Brain::Brain() {
+    std::cout << "Brain constructor called" << std::endl;
     for (int i = 0; i < 100; ++i) {
         _ideas[i] = "Default Idea";
     }
 }
 
 Brain::~Brain() {
+    std::cout << "Brain destructor called" << std::endl;
 }
 
-void Brain::setIdea(int index, const std::string &idea) {
-    if (index >= 0  &&index < 100) {
-        _ideas[index] = idea;
+void Brain::setIdea(const std::string &idea) {
+    for (int i = 0; i < 100; ++i) {
+        _ideas[i] = idea;
     }
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:49:42 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 17:49:44 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:48:36 by reshivii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,31 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-int main() {
-    // Test Animal
-    std::cout << "--- Test Animal ---" << std::endl;
-    const Animal* animal = new Animal();
-    animal->makeSound(); // Output: Animal sound!
-    std::cout << "Animal type: " << animal->getType() << std::endl; // Output: Animal
-    delete animal;
+int main()
+{
+	Animal	*animals[4];
 
-    // Test Dog
-    std::cout << "\n--- Test Dog ---" << std::endl;
-    const Animal* dog = new Dog();
-    dog->makeSound(); // Output: Woof woof!
-    std::cout << "Dog type: " << dog->getType() << std::endl; // Output: Dog
-    delete dog;
+	for (int i = 0; i < 2; i++)
+		animals[i] = new Dog();
+	for (int i = 2; i < 4; i++)
+		animals[i] = new Cat();
+	std::cout << std::endl;
 
-    // Test Cat
-    std::cout << "\n--- Test Cat ---" << std::endl;
-    const Animal* cat = new Cat();
-    cat->makeSound(); // Output: Meow meow!
-    std::cout << "Cat type: " << cat->getType() << std::endl; // Output: Cat
-    delete cat;
+	for (int i = 0; i < 4; i++)
+		delete animals[i];
+	std::cout << std::endl;
 
-    // Test an array of Animals
-    std::cout << "\n--- Test Array of Animals ---" << std::endl;
-    const int animalCount = 6;
-    const Animal* animals[animalCount];
-
-    animals[0] = new Dog();
-    animals[1] = new Cat();
-    animals[2] = new Dog();
-    animals[3] = new Cat();
-    animals[4] = new Dog();
-    animals[5] = new Cat();
-
-    for (int i = 0; i < animalCount; i++) {
-        const Animal* currentAnimal = animals[i];
-        std::cout << "Animal " << i << " type: " << currentAnimal->getType() << std::endl;
-        currentAnimal->makeSound();
-        delete currentAnimal;
-    }
-
-    return 0;
+	Cat	cat;
+	cat.setIdea("This is so boring");
+	Cat	copy(cat);
+	cat.setIdea("This is sooooooooooooooooo boring");
+	std::cout << std::endl;
+	
+	std::cout << cat.getIdea(0) << std::endl;
+	std::cout << cat.getIdea(1) << std::endl;
+	std::cout << copy.getIdea(0) << std::endl;
+	std::cout << copy.getIdea(1) << std::endl;
+	std::cout << std::endl;
+	
+	return 0;
 }

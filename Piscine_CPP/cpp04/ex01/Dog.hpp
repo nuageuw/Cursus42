@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:45:21 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 15:59:40 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:39:47 by reshivii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 
 class Dog : public Animal {
 private:
-    Brain* brain;
+    Brain* _brain;
 
 public:
     Dog();
     Dog(const Dog &other);
     Dog &operator=(const Dog &other);
-    virtual ~Dog();
+    ~Dog();
 
     virtual void makeSound() const;
     void			addIdea(const std::string &idea);

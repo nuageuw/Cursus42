@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:45:29 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 14:11:56 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/02 20:24:35 by reshivii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ Zombie	*newZombie(std::string name);
 void	randomChump(std::string name);
 
 int main(void) {
-	Zombie *z1 = newZombie("Mireille");
+	Zombie *z1 = newZombie("Gotaga");
 	z1->announce();
-	randomChump("Mirin");
+	randomChump("Squeezie");
 	delete z1;
 	return 0;
 }

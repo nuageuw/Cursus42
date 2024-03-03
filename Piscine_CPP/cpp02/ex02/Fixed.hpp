@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:25:52 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 16:27:59 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/02 20:44:07 by reshivii         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ public:
     Fixed operator*(const Fixed &other) const;
     Fixed operator/(const Fixed &other) const;
 
-    Fixed &operator++();     // Pre-increment
-    Fixed operator++(int);   // Post-increment
-    Fixed &operator--();     // Pre-decrement
-    Fixed operator--(int);   // Post-decrement
+    Fixed &operator++();
+    Fixed operator++(int);
+    Fixed &operator--();
+    Fixed operator--(int);
 
     static Fixed &min(Fixed &a, Fixed &b);
     static const Fixed &min(const Fixed &a, const Fixed &b);
