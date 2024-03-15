@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:56:41 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 15:02:28 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:54:39 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ public:
     ScavTrap(const std::string &name);
     ScavTrap(const ScavTrap &other);
     ~ScavTrap();
+
+    ScavTrap	&operator=(const ScavTrap &copy);
 
     void attack(const std::string &target);
     void guardGate();

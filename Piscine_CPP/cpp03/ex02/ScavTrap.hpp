@@ -6,30 +6,28 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:56:41 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 17:11:32 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:32:52 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-#include <iostream>
-#include <string>
+# include <iostream>
+# include <string>
+# include "ClapTrap.hpp"
 
-class ScavTrap {
+class ScavTrap: public ClapTrap {
 public:
+    ScavTrap();
     ScavTrap(const std::string &name);
     ScavTrap(const ScavTrap &other);
     ~ScavTrap();
 
+    ScavTrap	&operator=(const ScavTrap &copy);
+
     void attack(const std::string &target);
     void guardGate();
-
-private:
-    std::string name;
-    unsigned int hitPoints;
-    unsigned int energyPoints;
-    unsigned int attackDamage;
 };
 
 #endif

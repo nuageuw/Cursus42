@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:26:06 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 17:28:26 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:20:21 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,49 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-#include "DiamondTrap.hpp" // Ajout de l'en-tête pour la classe DiamondTrap
-
+#include "DiamondTrap.hpp"
 int main() {
-    ClapTrap clapTrap("Clap");
-    ClapTrap clapTrap2(clapTrap);
-    ClapTrap clapTrap3("ClapClone");
-    clapTrap3 = clapTrap;
+    //  USELESS BUT IF YOU WANT TO TEST
+    
+    // ClapTrap clapTrap("Locklear");
+    // ClapTrap clapTrap2(clapTrap);
+    // ClapTrap clapTrap3("Laink");
 
-    clapTrap.attack("Enemy");
+    // clapTrap.attack(clapTrap3.getName());
+    // clapTrap.takeDamage(5);
 
-    ScavTrap scavTrap("Scav");
-    ScavTrap scavTrap2(scavTrap);
-    ScavTrap scavTrap3("ScavClone");
-    scavTrap3 = scavTrap;
+    // ScavTrap scavTrap("Terracid");
+    // ScavTrap scavTrap2(scavTrap);
+    // ScavTrap scavTrap3("CaFaitBeaucoup");
 
-    scavTrap.attack("Enemy");
-    scavTrap.guardGate();
+    // scavTrap.attack(scavTrap3.getName());
+    // scavTrap3.takeDamage(5);
+    // scavTrap.guardGate();
 
-    FragTrap fragTrap1("F1");
-    FragTrap fragTrap2(fragTrap1);
+	// FragTrap fragTrap1("Laupok");
+    // FragTrap fragTrap2(fragTrap1);
+    // FragTrap fragTrap3("Amixem");
 
-    fragTrap1.attack("target");
-    fragTrap1.highFivesGuys();
-    fragTrap2.attack("target");
-    fragTrap2.highFivesGuys();
+    // fragTrap1.attack(fragTrap3.getName());
+    // fragTrap1.highFivesGuys();
+    // fragTrap2.attack(fragTrap3.getName());
+    // fragTrap2.highFivesGuys();
 
-    // Tests pour DiamondTrap
-    DiamondTrap diamondTrap1("D1");
+    DiamondTrap diamondTrap1("Etienne");
     DiamondTrap diamondTrap2(diamondTrap1);
+    DiamondTrap diamondTrap3("Yvan");
 
-    diamondTrap1.FragTrap::attack("target");
-    diamondTrap1.highFivesGuys();
+    diamondTrap1.attack(diamondTrap3.getName());
+    diamondTrap1.beRepaired(34);
+    diamondTrap1.whoAmI();
 
-    diamondTrap1.ScavTrap::attack("target");
-    diamondTrap1.guardGate();
+    diamondTrap2.attack(diamondTrap3.getName());
+    diamondTrap2.takeDamage(5);
+    diamondTrap2.whoAmI();
+
+    diamondTrap3.whoAmI();
+    diamondTrap3.highFivesGuys();
+    diamondTrap3.guardGate();
 
     return 0;
 }

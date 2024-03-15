@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:58:06 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 17:07:50 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 22:23:52 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 #include "ScavTrap.hpp"
 
 int main() {
-    ClapTrap clapTrap("Clap");
+    ClapTrap clapTrap("Domingo");
     ClapTrap clapTrap2(clapTrap);
-    ClapTrap clapTrap3("ClapClone");
-    clapTrap3 = clapTrap;
+    ClapTrap clapTrap3("LuiLa");
 
-    clapTrap.attack("Enemy");
+    clapTrap.attack(clapTrap3.getName());
+    clapTrap.takeDamage(5);
 
-    ScavTrap scavTrap("Scav");
+    ScavTrap scavTrap("Jiraya");
     ScavTrap scavTrap2(scavTrap);
-    ScavTrap scavTrap3("ScavClone");
+    ScavTrap scavTrap3("PlusOuMoins");
     scavTrap3 = scavTrap;
 
-    scavTrap.attack("Enemy");
+    scavTrap.attack(scavTrap3.getName());
+    scavTrap3.takeDamage(5);
     scavTrap.guardGate();
 
     return 0;

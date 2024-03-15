@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 17:19:02 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 15:19:29 by aburnott         ###   ########.fr       */
+/*   Created: 2023/07/29 16:52:24 by aburnott          #+#    #+#             */
+/*   Updated: 2024/03/15 22:43:21 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ public:
     void attack(const std::string &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
+
+    std::string getName() const;
 
 protected:
     std::string _name;

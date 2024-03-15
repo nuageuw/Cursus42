@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:58:06 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 17:16:00 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:21:14 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,31 @@
 #include "FragTrap.hpp"
 
 int main() {
-    ClapTrap clapTrap("Clap");
+    ClapTrap clapTrap("Avamind");
     ClapTrap clapTrap2(clapTrap);
-    ClapTrap clapTrap3("ClapClone");
-    clapTrap3 = clapTrap;
+    ClapTrap clapTrap3("BagheraJones");
 
-    clapTrap.attack("Enemy");
+    clapTrap.attack(clapTrap3.getName());
+    clapTrap.takeDamage(5);
 
-    ScavTrap scavTrap("Scav");
+    ScavTrap scavTrap("Zerator");
     ScavTrap scavTrap2(scavTrap);
-    ScavTrap scavTrap3("ScavClone");
-    scavTrap3 = scavTrap;
+    ScavTrap scavTrap3("Horty");
 
-    scavTrap.attack("Enemy");
+    scavTrap.attack(scavTrap3.getName());
+    scavTrap3.takeDamage(5);
     scavTrap.guardGate();
 
-	FragTrap fragTrap1("F1");
+	FragTrap fragTrap1("AntoineDaniel");
     FragTrap fragTrap2(fragTrap1);
+    FragTrap fragTrap3("JaiPlusDeNom");
 
-    fragTrap1.attack("target");
+    fragTrap1.attack(fragTrap3.getName());
     fragTrap1.highFivesGuys();
-    fragTrap2.attack("target");
+    fragTrap1.beRepaired(7);
+    fragTrap2.attack(fragTrap3.getName());
     fragTrap2.highFivesGuys();
+    fragTrap2.takeDamage(5);
 
     return 0;
 }

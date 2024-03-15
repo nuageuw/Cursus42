@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:52:24 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 15:03:04 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:49:54 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ public:
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
 
+    std::string getName() const;
+
 protected:
     std::string _name;
-    int _hitPoints;
-    int _energyPoints;
-    int _attackDamage;
+    unsigned int _hitPoints;
+    unsigned int _energyPoints;
+    unsigned int _attackDamage;
 };
 
 #endif
