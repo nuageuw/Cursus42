@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:39:02 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 15:41:20 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:42:54 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,18 @@
 #include <iostream>
 
 class Animal {
-public:
-    Animal();
-    virtual ~Animal();
-    virtual void makeSound() const;
-    std::string getType() const;
+    public:
+        Animal();
+        Animal(const Animal &other);
+        virtual ~Animal();
 
-protected:
-    std::string _type;
+        Animal &operator=(const Animal &other);
+
+        std::string getType() const;
+        virtual void makeSound() const;
+        
+    protected:
+        std::string _type;
 };
 
-#endif /* ANIMAL_HPP */
+#endif 

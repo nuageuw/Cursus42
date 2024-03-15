@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:40:28 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 15:41:41 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:46:46 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ protected:
 
 public:
     WrongAnimal();
-    virtual ~WrongAnimal();
+    WrongAnimal(const WrongAnimal &other);
+    ~WrongAnimal();
+    WrongAnimal &operator=(const WrongAnimal &other);
     void makeSound() const;
     std::string getType() const;
 };
 
-#endif /* WRONGANIMAL_HPP */
+#endif

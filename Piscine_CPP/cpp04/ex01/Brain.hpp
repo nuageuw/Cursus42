@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:45:40 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/03 14:38:44 by reshivii         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:53:50 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ private:
 
 public:
     Brain();
+    Brain(const Brain &other);
     ~Brain();
+    Brain &operator=(const Brain &other);
 
     void setIdea(const std::string &idea);
     const std::string &getIdea(int index) const;

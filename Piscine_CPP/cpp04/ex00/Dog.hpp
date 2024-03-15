@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:39:23 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 17:39:24 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:49:48 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 class Dog : public Animal {
 public:
     Dog();
+    Dog(const Dog &other);
     virtual ~Dog();
+    
+    Dog &operator=(const Dog &other);
     virtual void makeSound() const;
 };
 
-#endif /* DOG_HPP */
+#endif

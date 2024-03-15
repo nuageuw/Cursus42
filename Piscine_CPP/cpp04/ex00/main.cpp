@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:41:47 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 15:42:57 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:39:44 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ int main() {
 
     const WrongAnimal* wAnimal = new WrongAnimal();
     const WrongAnimal* wCat = new WrongCat();
+    WrongCat wrongCat;
     std::cout << wAnimal->getType() << " " << std::endl;
     std::cout << wCat->getType() << " " << std::endl;
     wAnimal->makeSound();
     wCat->makeSound();
+    wrongCat.makeSound();
     delete wAnimal;
     delete wCat;
 

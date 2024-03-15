@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:40:54 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 17:40:55 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:47:07 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 class WrongCat : public WrongAnimal {
 public:
     WrongCat();
-    virtual ~WrongCat();
+    WrongCat(const WrongCat &other);
+    ~WrongCat();
+    WrongCat &operator=(const WrongCat &other);
     void makeSound() const;
 };
 
-#endif /* WRONGCAT_HPP */
+#endif

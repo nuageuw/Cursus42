@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:45:54 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/03 14:53:12 by reshivii         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:54:22 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,23 @@ Brain::Brain() {
     }
 }
 
+Brain::Brain(const Brain &other) {
+    std::cout << "Brain copy constructor Called" << std::endl;
+    for (int i = 0; i < 100; i ++) {
+        this->_ideas[i] = other._ideas[i];
+    }
+}
+
 Brain::~Brain() {
     std::cout << "Brain destructor called" << std::endl;
+}
+
+Brain &Brain::operator=(const Brain &other) {
+    std::cout << "Brain copy operator Called" << std::endl;
+    for (int i = 0; i < 100; i ++) {
+        this->_ideas[i] = other._ideas[i];
+    }
+    return (*this);
 }
 
 void Brain::setIdea(const std::string &idea) {

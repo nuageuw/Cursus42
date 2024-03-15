@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/29 17:40:40 by aburnott          #+#    #+#             */
-/*   Updated: 2023/07/29 17:40:42 by aburnott         ###   ########.fr       */
+/*   Created: 2023/07/29 17:52:52 by aburnott          #+#    #+#             */
+/*   Updated: 2024/03/16 00:34:18 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongAnimal.hpp"
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-WrongAnimal::WrongAnimal() : type("WrongAnimal") {
-    std::cout << "WrongAnimal constructor called" << std::endl;
-}
+#include <iostream>
 
-WrongAnimal::~WrongAnimal() {
-    std::cout << "WrongAnimal destructor called" << std::endl;
-}
+class AAnimal {
+    public:
+        AAnimal();
+        AAnimal(const AAnimal &other);
+        virtual ~AAnimal();
 
-void WrongAnimal::makeSound() const {
-    std::cout << "WrongAnimal sound" << std::endl;
-}
+        AAnimal &operator=(const AAnimal &other);
 
-std::string WrongAnimal::getType() const {
-    return type;
-}
+        std::string getType() const;
+        virtual void makeSound() const = 0;
+        
+    protected:
+        std::string _type;
+};
+
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reshivii <reshivii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:49:42 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/03 14:48:36 by reshivii         ###   ########.fr       */
+/*   Updated: 2024/03/16 00:28:49 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,41 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-int main()
-{
-	Animal	*animals[4];
 
-	for (int i = 0; i < 2; i++)
-		animals[i] = new Dog();
-	for (int i = 2; i < 4; i++)
-		animals[i] = new Cat();
-	std::cout << std::endl;
+int main() {
+    Animal *animals[4];
+    for (int i = 0; i < 2; i++)
+        animals[i] = new Dog();
+    for (int i = 2; i < 4; i++)
+        animals[i] = new Cat();
+    for (int i = 0; i < 4; i++)
+        delete animals[i];
 
-	for (int i = 0; i < 4; i++)
-		delete animals[i];
-	std::cout << std::endl;
+    {
+        Cat cat1;
+        cat1.setIdea("Yes MA BOI");
+        Cat cat2(cat1);
+        cat1.setIdea("YupYup");
 
-	Cat	cat;
-	cat.setIdea("This is so boring");
-	Cat	copy(cat);
-	cat.setIdea("This is sooooooooooooooooo boring");
-	std::cout << std::endl;
+        std::cout << "Shallow Copy Test:" << std::endl;
+        std::cout << "Cat1 Idea 1: " << cat1.getIdea(0) << std::endl;
+        std::cout << "Cat1 Idea 2: " << cat1.getIdea(1) << std::endl;
+        std::cout << "Cat2 Idea 1: " << cat2.getIdea(0) << std::endl;
+        std::cout << "Cat2 Idea 2: " << cat2.getIdea(1) << std::endl;
+    }
+
+	{
+		Cat cat1;
+		cat1.setIdea("Nah");
+		Cat cat2 = cat1;
+		cat1.setIdea("blblblblblb");
 	
-	std::cout << cat.getIdea(0) << std::endl;
-	std::cout << cat.getIdea(1) << std::endl;
-	std::cout << copy.getIdea(0) << std::endl;
-	std::cout << copy.getIdea(1) << std::endl;
-	std::cout << std::endl;
-	
-	return 0;
+		std::cout << "\nDeep Copy Test:" << std::endl;
+		std::cout << "Cat1 Idea 1: " << cat1.getIdea(0) << std::endl;
+		std::cout << "Cat1 Idea 2: " << cat1.getIdea(1) << std::endl;
+		std::cout << "Cat2 Idea 1: " << cat2.getIdea(0) << std::endl;
+		std::cout << "Cat2 Idea 2: " << cat2.getIdea(1) << std::endl;
+	}
+
+    return 0;
 }

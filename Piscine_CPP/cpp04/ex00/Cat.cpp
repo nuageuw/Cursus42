@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:39:56 by aburnott          #+#    #+#             */
-/*   Updated: 2023/08/28 15:41:29 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:48:00 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,22 @@ Cat::Cat() {
     std::cout << "Cat constructor called" << std::endl;
 }
 
+Cat::Cat(const Cat &other) : Animal(other) {
+    std::cout << "Cat Copy constructor called" << std::endl;
+    this->_type = other._type;
+}
+
 Cat::~Cat() {
     std::cout << "Cat destructor called" << std::endl;
+}
+
+Cat &Cat::operator=(const Cat &other) {
+    std::cout << "Cat Assigment operator called" << std::endl;
+    if (this != &other)
+    {
+        this->_type = other._type;
+    }
+    return (*this);
 }
 
 void Cat::makeSound() const {

@@ -6,13 +6,13 @@
 #    By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:42:22 by aburnott          #+#    #+#              #
-#    Updated: 2023/07/29 17:46:52 by aburnott         ###   ########.fr        #
+#    Updated: 2024/03/16 00:41:34 by aburnott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Animal
+NAME		= AAnimal
 
-SRCS		= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp \
+SRCS		= main.cpp AAnimal.cpp Dog.cpp Cat.cpp \
 				Brain.cpp
 
 OBJDIR		= objs
