@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aburnott <aburnott@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:53:55 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 00:40:28 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:19:51 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "Cat.hpp"
 
 int main() {
-
-    // AAnimal test; This line will not compile because AAnimal is an abstract class
+    //This line will not compile because AAnimal is an abstract class
+    // AAnimal test; 
 
     const AAnimal* animal = new Dog();
     animal->makeSound();

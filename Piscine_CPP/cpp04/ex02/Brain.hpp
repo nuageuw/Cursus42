@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aburnott <aburnott@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 17:45:40 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 00:37:08 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:18:58 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 class Brain {
 private:
     std::string _ideas[100];
-    unsigned int	_index;
 
 public:
     Brain();
