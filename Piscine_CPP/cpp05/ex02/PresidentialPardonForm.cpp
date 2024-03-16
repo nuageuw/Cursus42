@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:43:17 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 12:20:12 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:54:36 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,4 @@ void PresidentialPardonForm::execute(const Bureaucrat& executor) const {
 		throw AForm::GradeTooLowException();
 
 	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox.\n";
-}
-
-const std::string& PresidentialPardonForm::getTarget() const {
-	return _target;
 }

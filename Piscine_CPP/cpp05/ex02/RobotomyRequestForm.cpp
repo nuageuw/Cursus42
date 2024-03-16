@@ -6,13 +6,12 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:42:34 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 13:03:52 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:54:42 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
-#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request Form", 72, 45), _target("") {}
 
@@ -36,13 +35,9 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
     if (executor.getGrade() > getGradeToExecute())
         throw AForm::GradeTooLowException();
 
-    // int successRate = std::rand() % 100;
-    // if (successRate < 50)
-    //     std::cout << this->_target << " has been robotomized successfully!\n";
-    // else
-    //     std::cout << "Robotomy of " <<  this->_target << " failed!\n";
-}
-
-const std::string& RobotomyRequestForm::getTarget() const {
-	return _target;
+    std::cout << "BRRRZZZZZZZZZZZZ" << std::endl;
+    if (std::rand() % 2 == 0)
+		std::cout << this->getTarget() << " has been robotomized\n";
+	else
+		std::cout << this->getTarget() << " couldn't be robotomized\n";
 }

@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:38:52 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 11:56:16 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:57:49 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ public:
     };
 
     AForm();
-    AForm(const std::string& name, int gradeToSign, int gradeToExecute);
+    AForm(const std::string& name, int gradeToSign, int gradeToExecute, const std::string& target);
     virtual ~AForm();
     AForm(const AForm& other);
     AForm& operator=(const AForm& other);
@@ -51,6 +51,7 @@ public:
     int getGradeToExecute() const;
     virtual void execute(const Bureaucrat& executor) const = 0;
     void beSigned(const Bureaucrat& bureaucrat);
+    std::string getTarget(void) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& form);

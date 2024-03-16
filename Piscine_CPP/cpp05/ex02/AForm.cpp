@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:38:47 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 12:21:27 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:58:54 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 AForm::AForm() : _name("AForm"), _signedStatus(false), _gradeToSign(1), _gradeToExecute(1) {}
 
 
-AForm::AForm(const std::string& name, int gradeToSign, int gradeToExecute)
-    : _name(name), _signedStatus(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
+AForm::AForm(const std::string& name, int gradeToSign, int gradeToExecute, const std::string& target)
+    : _name(name), _signedStatus(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _target(target) {
     if (gradeToSign < 1 || gradeToExecute < 1)
         throw GradeTooHighException();
     else if (gradeToSign > 150 || gradeToExecute > 150)
@@ -65,6 +65,10 @@ void AForm::beSigned(const Bureaucrat& bureaucrat) {
 std::ostream& operator<<(std::ostream& os, const AForm& form) {
     os << "Form: " << form.getName() << ", Grade required to sign: " << form.getGradeToSign() << ", Grade required to execute: " << form.getGradeToExecute() << ", Signed: " << (form.isSigned() ? "Yes" : "No") << "\n";
     return os;
+}
+
+std::string AForm::getTarget(void) const {
+    return (this->_target);
 }
 
 const char *AForm::GradeTooHighException::what() const throw() {

@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:42:21 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 12:20:19 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:55:03 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 #include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm {
-private:
-	std::string _target;
-
 public:
 	RobotomyRequestForm();
 	RobotomyRequestForm(const std::string& target);

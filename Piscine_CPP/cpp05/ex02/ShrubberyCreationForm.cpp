@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:41:15 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 12:30:22 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:54:51 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	}
 	return *this;
 }
-
-const std::string& ShrubberyCreationForm::getTarget() const {
-	return _target;
-}
-
-// void ShrubberyCreationForm::setTarget(const std::string& target) {
-// 	_target = target;
-// }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
     : AForm("Shrubbery Creation Form", 145, 137), _target(target) {}
