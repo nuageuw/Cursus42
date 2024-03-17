@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:17:49 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 11:59:46 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:32:35 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ public:
     Bureaucrat(const std::string& name, int grade);
     Bureaucrat(const Bureaucrat& other);
     ~Bureaucrat();
+    
     Bureaucrat& operator=(const Bureaucrat& other);
+    
     const std::string& getName() const;
     int getGrade() const;
     void incrementGrade();

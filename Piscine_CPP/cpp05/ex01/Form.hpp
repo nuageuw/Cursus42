@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:49:41 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 11:10:39 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:20:40 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ public:
     Form(const std::string& name, int gradeToSign, int gradeToExecute) throw(GradeTooHighException, GradeTooLowException);
     ~Form();
     Form(const Form& other);
+    
     Form& operator=(const Form& other);
+    
     const std::string& getName() const;
     bool isSigned() const;
     int getGradeToSign() const;

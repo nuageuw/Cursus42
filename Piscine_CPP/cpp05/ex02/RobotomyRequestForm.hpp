@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:42:21 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 13:55:03 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 18:58:01 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ public:
 	RobotomyRequestForm(const RobotomyRequestForm& other);
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 	~RobotomyRequestForm();
-
-	const std::string& getTarget() const;
 
 	void execute(const Bureaucrat& executor) const;
 };

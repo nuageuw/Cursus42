@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:41:15 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 13:54:51 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:29:57 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,48 @@
 #include <fstream>
 #include <cstdlib>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 145, 137), _target("") {}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 145, 137) {
+	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
+	this->setTarget("default");
+}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), _target(other._target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other) {
+	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
+	*this = other;
+}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
+	std::cout << "ShrubberyCreationForm assignation operator called" << std::endl;
 	if (this != &other) {
-		this->_target = other._target;
+		this->setTarget(other.getTarget());
 	}
 	return *this;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
-    : AForm("Shrubbery Creation Form", 145, 137), _target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("Shrubbery Creation Form", 145, 137) {
+	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
+	this->setTarget(target);
+}
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
-	if (!isSigned())
-		throw AForm::GradeTooLowException();
-	if (executor.getGrade() > getGradeToExecute())
-		throw AForm::GradeTooLowException();
+	this->AForm::execute(executor);
 	
 	std::ofstream output((this->getTarget() + "_shrubbery").c_str());
 	if (!output.is_open())
-		throw Failed();
+		throw std::ofstream::failure("Bad open");
 	
-	output << "ASCII trees for " << this->_target << "!\n";
+	output << "ASCII trees for " << this->getTarget() << "!\n";
+	output << "      /\\      \n";
+	output << "     /\\*\\     \n";
+	output << "    /\\O\\*\\    \n";
+	output << "   /*/\\/\\/\\   \n";
+	output << "  /\\O\\/\\*\\/\\  \n";
+	output << " /\\*\\/\\*\\/\\/\\ \n";
+	output << "/\\O\\/\\/*/\\/O/\\ \n";
+	output << "      ||      \n";
+	output << "      ||      \n";
+	output << "      ||      \n";
 	output.close();
-}
-
-const char* ShrubberyCreationForm::Failed::what(void) const throw() {
-	return "Failed to create file";
 }

@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:17:45 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 13:06:07 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:34:33 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-     Bureaucrat bigBoss("BIGBOSS", 1);
-    Bureaucrat employe1("Garreth", 139);
-    Bureaucrat employe2("Hugo", 50);
-    Bureaucrat employe3("Lars", 20);
+    Bureaucrat bigBoss("Zen", 1);
+    Bureaucrat employe1("Vatira", 139);
+    Bureaucrat employe2("Juicy", 50);
+    Bureaucrat employe3("Atow", 20);
     std::cout << "===========Copy and assigment operators==========" << std::endl;
     ShrubberyCreationForm def;
     std::cout << def;
