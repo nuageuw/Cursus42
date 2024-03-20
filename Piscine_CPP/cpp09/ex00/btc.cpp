@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:23:04 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/20 18:49:01 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:07:55 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,16 @@ bool BitcoinExchange::_valid_date(const std::string& date) {
     } else if (month == 4 || month == 6 || month == 9 || month == 11) {
         if (day > 30)
             return false;
+    }
+
+    for (size_t i = 0; i < date.length(); i++) {
+        if (i == 4 || i == 7) {
+            if (date[i] != '-')
+                return false;
+        } else {
+            if (!isdigit(date[i]))
+                return false;
+        }
     }
 
     return true;
