@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:23:04 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/18 21:56:00 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:49:01 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ float BitcoinExchange::_parse_number(const std::string& str, size_t pos) {
         std::cout << "Error: not a positive number.\n";
         return -1;
     } else if (value > 1000) {
-        std::cout << "Error: too large number.\n";
+        std::cout << "Error: too large a number.\n";
         return -1;
     }
     return value;
@@ -117,16 +117,29 @@ float BitcoinExchange::_parse_number(const std::string& str, size_t pos) {
 
 bool BitcoinExchange::_valid_date(const std::string& date) {
     if (date.length() != 10)
-		return false;
-	for (int i = 0; i < 4; i++)
-		if (!isdigit(date[i]))
-			return false;
-	if (date[4] != '-' || date[7] != '-')
-		return false;
-	if (!isdigit(date[5]) || !isdigit(date[6])
-		|| !isdigit(date[8]) || !isdigit(date[9]))
-		return false;
-	return true;
+        return false;
+
+    int year = atoi(date.substr(0, 4).c_str());
+    int month = atoi(date.substr(5, 2).c_str());
+    int day = atoi(date.substr(8, 2).c_str());
+
+    if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
+        return false;
+
+    if (month == 2) {
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+            if (day > 29)
+                return false;
+        } else {
+            if (day > 28)
+                return false;
+        }
+    } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+        if (day > 30)
+            return false;
+    }
+
+    return true;
 }
 
 bool BitcoinExchange::_valid_number(const std::string& number) {

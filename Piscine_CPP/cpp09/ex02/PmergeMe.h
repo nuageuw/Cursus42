@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:17:50 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/18 22:59:54 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:55:03 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 
 class PmergeMe {
 public:
+    PmergeMe();
     PmergeMe(const std::vector<int>& inputSequence);
+    ~PmergeMe();
+    PmergeMe(const PmergeMe& other);
+    PmergeMe& operator=(const PmergeMe& other);
     
     void mergeSortList(std::list<int>& lst);
     void mergeSortVector(std::vector<int>& vec);

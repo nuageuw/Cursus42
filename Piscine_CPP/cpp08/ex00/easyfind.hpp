@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 09:53:49 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/18 10:17:50 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:34:40 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ValueNotFoundException : public std::exception
 };
 
 template <typename T>
-typename T::iterator easyfind(T& container, int value) {
+typename T::iterator easyFind(T& container, int value) {
     typename T::iterator it = std::find(container.begin(), container.end(), value);
     if (it != container.end()) {
         return it;

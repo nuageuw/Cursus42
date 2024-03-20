@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 22:18:04 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/18 22:59:47 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:57:49 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,31 @@
 #include <ctime>
 #include <iomanip>
 
+
+PmergeMe::PmergeMe() {}
+
 PmergeMe::PmergeMe(const std::vector<int>& inputSequence) : sequence(inputSequence) {}
+
+PmergeMe::~PmergeMe() {}
+
+PmergeMe::PmergeMe(const PmergeMe& other) {
+    sequence = other.sequence;
+    sortedSequenceVector = other.sortedSequenceVector;
+    sortedSequenceList = other.sortedSequenceList;
+    timeVector = other.timeVector;
+    timeList = other.timeList;
+}
+
+PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
+    if (this != &other) {
+        sequence = other.sequence;
+        sortedSequenceVector = other.sortedSequenceVector;
+        sortedSequenceList = other.sortedSequenceList;
+        timeVector = other.timeVector;
+        timeList = other.timeList;
+    }
+    return *this;
+}
 
 void PmergeMe::mergeSortWithVector() {
     clock_t start = clock();

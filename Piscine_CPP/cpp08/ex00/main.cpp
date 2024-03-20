@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 09:54:03 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/18 10:18:36 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:34:46 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main() {
         vec.push_back(i);
     }
     try {
-        std::vector<int>::iterator result = easyfind(vec, 3);
+        std::vector<int>::iterator result = easyFind(vec, 3);
         std::cout << "Value found at index: " << std::distance(vec.begin(), result) << std::endl;
     } catch (const std::exception& e) {
         std::cout << "Exception caught: " << e.what() << std::endl;
@@ -32,7 +32,7 @@ int main() {
         lst.push_back(i);
     }
     try {
-        std::list<int>::iterator result = easyfind(lst, 7);
+        std::list<int>::iterator result = easyFind(lst, 7);
         std::cout << "Value found at index: " << std::distance(lst.begin(), result) << std::endl;
     } catch (const std::exception& e) {
         std::cout << "Exception caught: " << e.what() << std::endl;
