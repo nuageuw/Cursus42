@@ -5,94 +5,221 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 21:08:27 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/17 22:33:05 by aburnott         ###   ########.fr       */
+/*   Created: 2024/03/20 18:03:29 by aburnott          #+#    #+#             */
+/*   Updated: 2024/03/20 18:11:03 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConversion.hpp"
-
-#include <cmath> // For std::isnan
 #include <iostream>
-#include <string>
-#include <cctype> // For isprint
-#include <cstdlib> // For atoi and atof
-#include <sstream> // For std::ostringstream
+#include <sstream>
+#include <cmath>
+#include <cctype>
+#include <cerrno>
 
 ScalarConversion::ScalarConversion()
 {
+}
+
+ScalarConversion::ScalarConversion(const ScalarConversion &copy)
+{
+    (void) copy;
 }
 
 ScalarConversion::~ScalarConversion()
 {
 }
 
-ScalarConversion::ScalarConversion(const ScalarConversion& other)
+ScalarConversion& ScalarConversion::operator=(const ScalarConversion &copy)
 {
-    (void)other;
+    (void) copy;
+    return *this;
 }
 
-ScalarConversion& ScalarConversion::operator=(const ScalarConversion& other)
+void ScalarConversion::convert(std::string str)
 {
-    (void)other;
-    return (*this);
+    // Check non displayable characters
+    for (size_t i = 0; i < str.size(); i++)
+        if (!isprint(str[i]))
+        {
+            std::cout << "Use of non displayable characters is not allowed\n";
+            return;
+        }
+
+    // Check char
+    if (str.size() == 1 && !isdigit(str[0]))
+    {
+        _toChar(str);
+        return;
+    }
+
+    // Check int
+    size_t i = 0;
+    if (str[i] == '+' || str[i] == '-')
+        i++;
+    while (isdigit(str[i]))
+        i++;
+    if (str[i] == 0)
+    {
+        _toInt(str);
+        return;
+    }
+
+    // Check float
+    int dot = 0;
+    i = 0;
+    if (str[i] == '+' || str[i] == '-')
+        i++;
+    while (isdigit(str[i]) || str[i] == '.')
+    {
+        if (str[i] == '.')
+            dot++;
+        i++;
+    }
+    if (str[i] == 'f' && dot <= 1 && str[i + 1] == 0)
+    {
+        _toFloat(str);
+        return;
+    }
+    if (str == "-inff" || str == "+inff" || str == "nanf")
+    {
+        _toFloat(str);
+        return;
+    }
+
+    // Check double
+    dot = 0;
+    i = 0;
+    if (str[i] == '+' || str[i] == '-')
+        i++;
+    while (isdigit(str[i]) || str[i] == '.')
+    {
+        if (str[i] == '.')
+            dot++;
+        i++;
+    }
+    if (dot == 1 && str[i] == 0)
+    {
+        _toDouble(str);
+        return;
+    }
+    if (str == "-inf" || str == "+inf" || str == "nan")
+    {
+        _toDouble(str);
+        return;
+    }
+
+    std::cout << "Impossible conversion\nSupported types are <char>, <int>, "
+              << "<float> and <double>\n";
 }
 
-void ScalarConversion::convert(std::string str) {
-    // Convert to char
-    try {
-        int intValue = std::atoi(str.c_str());
-        char charValue = static_cast<char>(intValue);
-        if (std::isprint(charValue)) {
-            std::cout << "char: '" << charValue << "'" << std::endl;
-        } else {
-            std::cout << "char: Non displayable" << std::endl;
-        }
-    } catch (const std::exception& e) {
-        std::cout << "char: impossible" << std::endl;
+void ScalarConversion::_toChar(std::string str)
+{
+    char c = str[0];
+
+    std::cout << "char: '" << c << "'\n";
+    std::cout << "int: " << static_cast<int>(c) << std::endl;
+    std::cout << "float: " << static_cast<float>(c) << ".0f\n";
+    std::cout << "double: " << static_cast<double>(c) << ".0\n";
+}
+
+void ScalarConversion::_toInt(std::string str)
+{
+    std::istringstream iss(str);
+    std::istringstream iss2(str);
+    int n;
+    long l;
+
+    iss >> n;
+    iss2 >> l;
+    if (n != l)
+    {
+        std::cout << "char: impossible\n";
+        std::cout << "int: overflow\n";
+        std::cout << "float: impossible\n";
+        std::cout << "double: impossible\n";
+        return;
     }
-    // Convert to int
-    try {
-        int intValue = static_cast<int>(std::atoi(str.c_str()));
-        std::cout << "int: " << intValue << std::endl;
-    } catch (const std::exception& e) {
-        std::cout << "int: impossible" << std::endl;
+    if (!isprint(static_cast<char>(n)))
+        std::cout << "char: non displayable\n";
+    else
+        std::cout << "char: '" << static_cast<char>(n) << "'\n";
+    std::cout << "int: " << n << std::endl;
+    std::cout << "float: " << static_cast<float>(n) << ".0f\n";
+    std::cout << "double: " << static_cast<double>(n) << ".0\n";
+}
+
+void ScalarConversion::_toFloat(std::string str)
+{
+    float n;
+
+    if (str == "-inff" || str == "+inff" || str == "nanf")
+    {
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        std::cout << "float: " << str << std::endl;
+        std::cout << "double: " << str.substr(0, str.size() - 1)
+                  << std::endl;
+        return;
     }
-    // Convert to float
-    try {
-        float floatValue = static_cast<float>(std::atof(str.c_str()));
-        std::ostringstream oss;
-        oss << std::fixed;
-    
-        oss << floatValue;
-    
-        std::string output = oss.str();
-        size_t pos = output.find_last_not_of('0');
-        if (pos != std::string::npos && output[pos] == '.') {
-            pos++; // Include the decimal point if it's the last character
-        }
-        output = output.substr(0, pos + 1);
-        
-        std::cout << "float: " << output << "f" << std::endl;
-    } catch (const std::exception& e) {
-        std::cout << "float: impossible" << std::endl;
+    n = static_cast<float>(strtod(str.c_str(), NULL));
+    if (n == HUGE_VALF || n == -HUGE_VALF || errno == ERANGE)
+    {
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        std::cout << "float: overflow\n";
+        std::cout << "double: impossible\n";
+        return;
     }
-    // Convert to double
-    try {
-        double doubleValue = static_cast<double>(std::atof(str.c_str()));
-        std::ostringstream oss;
-        oss << std::fixed;
-        oss << doubleValue;
-        
-        std::string output = oss.str();
-        size_t pos = output.find_last_not_of('0');
-        if (pos != std::string::npos && output[pos] == '.') {
-            pos++; // Include the decimal point if it's the last character
-        }
-        output = output.substr(0, pos + 1);
-        
-        std::cout << "double: " << output << std::endl;
-    } catch (const std::exception& e) {
-        std::cout << "double: impossible" << std::endl;
+    if (!isprint(static_cast<char>(n)))
+        std::cout << "char: non displayable\n";
+    else
+        std::cout << "char: '" << static_cast<char>(n) << "'\n";
+    std::cout << "int: " << static_cast<int>(n) << std::endl;
+    std::cout << "float: " << n;
+    if (static_cast<int>(n) == n)
+        std::cout << ".0f\n";
+    else
+        std::cout << "f\n";
+    std::cout << "double: " << static_cast<double>(n);
+    if (static_cast<int>(n) == n)
+        std::cout << ".0";
+    std::cout << std::endl;
+}
+
+void ScalarConversion::_toDouble(std::string str)
+{
+    double n;
+
+    if (str == "-inf" || str == "+inf" || str == "nan")
+    {
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        std::cout << "float: " << str << "f\n";
+        std::cout << "double: " << str << std::endl;
+        return;
     }
+    n = strtod(str.c_str(), NULL);
+    if (n == HUGE_VAL || n == -HUGE_VAL || errno == ERANGE)
+    {
+        std::cout << "char: impossible\n";
+        std::cout << "int: impossible\n";
+        std::cout << "float: impossible\n";
+        std::cout << "double: overflow\n";
+        return;
+    }
+    if (!isprint(static_cast<char>(n)))
+        std::cout << "char: non displayable\n";
+    else
+        std::cout << "char: '" << static_cast<char>(n) << "'\n";
+    std::cout << "int: " << static_cast<int>(n) << std::endl;
+    std::cout << "float: " << static_cast<float>(n);
+    if (static_cast<int>(n) == n)
+        std::cout << ".0f\n";
+    else
+        std::cout << "f\n";
+    std::cout << "double: " << n;
+    if (static_cast<int>(n) == n)
+        std::cout << ".0";
+    std::cout << std::endl;
 }

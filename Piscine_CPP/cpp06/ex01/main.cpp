@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 23:26:15 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/18 00:18:17 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:24:02 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <iostream>
 
 int main() {
-	// Btw this project is non-sens because uintptr_t asked in the subject is c++99 and not c++98 :) :) :) 
 	
 	Data data(42);
 
