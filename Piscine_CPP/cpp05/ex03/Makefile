@@ -6,14 +6,14 @@
 #    By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:42:22 by aburnott          #+#    #+#              #
-#    Updated: 2024/03/21 18:23:01 by aburnott         ###   ########.fr        #
+#    Updated: 2024/03/21 18:23:08 by aburnott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= AForm
+NAME		= Intern
 
 SRCS		= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
-			RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+			RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 
 OBJDIR		= objs
 

@@ -6,11 +6,11 @@
 #    By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/29 17:42:22 by aburnott          #+#    #+#              #
-#    Updated: 2024/03/16 10:55:31 by aburnott         ###   ########.fr        #
+#    Updated: 2024/03/21 18:22:51 by aburnott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Bureaucrat
+NAME		= Form
 
 SRCS		= main.cpp Bureaucrat.cpp Form.cpp
 

@@ -6,7 +6,7 @@
 /*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:50:55 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/16 11:27:12 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:06:35 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 Form::Form() : _name("default"), _signedStatus(false), _gradeToSign(150), _gradeToExecute(150) {}
 
-Form::Form(const std::string& name, int gradeToSign, int gradeToExecute) throw(GradeTooHighException, GradeTooLowException)
+Form::Form(const std::string& name, int gradeToSign, int gradeToExecute)
     : _name(name), _signedStatus(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
     if (gradeToSign < 1 || gradeToExecute < 1)
 	{
