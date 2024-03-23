@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConversion.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aburnott <aburnott@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aburnott <aburnott@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 18:03:29 by aburnott          #+#    #+#             */
-/*   Updated: 2024/03/20 18:11:03 by aburnott         ###   ########.fr       */
+/*   Updated: 2024/03/23 09:55:20 by aburnott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ ScalarConversion& ScalarConversion::operator=(const ScalarConversion &copy)
 
 void ScalarConversion::convert(std::string str)
 {
-    // Check non displayable characters
     for (size_t i = 0; i < str.size(); i++)
         if (!isprint(str[i]))
         {
@@ -46,14 +45,12 @@ void ScalarConversion::convert(std::string str)
             return;
         }
 
-    // Check char
     if (str.size() == 1 && !isdigit(str[0]))
     {
         _toChar(str);
         return;
     }
 
-    // Check int
     size_t i = 0;
     if (str[i] == '+' || str[i] == '-')
         i++;
@@ -65,7 +62,6 @@ void ScalarConversion::convert(std::string str)
         return;
     }
 
-    // Check float
     int dot = 0;
     i = 0;
     if (str[i] == '+' || str[i] == '-')
@@ -87,7 +83,6 @@ void ScalarConversion::convert(std::string str)
         return;
     }
 
-    // Check double
     dot = 0;
     i = 0;
     if (str[i] == '+' || str[i] == '-')
