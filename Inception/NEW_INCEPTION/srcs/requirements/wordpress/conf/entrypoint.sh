@@ -11,7 +11,7 @@ if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
     				--dbname=$MARIADB_NAME \
     				--dbuser=$MARIADB_USER \
     				--dbpass=$MARIADB_PASSWORD \
-					--path='/var/www/wordpress'
+					--path='/var/www/html'
 
 	wp core install \
 					--path=/var/www/html \
@@ -25,7 +25,7 @@ if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
 	wp user create \
 				$WORDPRESS_USER $WORDPRESS_USER_EMAIL \
 				--user_pass=$WORDPRESS_USER_PASSWORD \
-				--role=author --path=/var/www/wordpress \
+				--role=author --path=/var/www/html \
 				--allow-root
 fi
 
