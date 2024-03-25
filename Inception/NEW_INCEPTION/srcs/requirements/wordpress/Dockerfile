@@ -18,6 +18,7 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 # RUN chown -R root:root /var/www/var/www/html
 EXPOSE 9000
 COPY conf/entrypoint.sh /usr/local/bin/entrypoint.sh
+# COPY conf/wp-config.php /var/www/html/wp-config.php
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/usr/sbin/php-fpm7.3", "-F"]

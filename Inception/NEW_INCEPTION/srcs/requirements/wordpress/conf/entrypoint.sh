@@ -25,7 +25,7 @@ if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
 	wp user create \
 				$WORDPRESS_USER $WORDPRESS_USER_EMAIL \
 				--user_pass=$WORDPRESS_USER_PASSWORD \
-				--role=author --path=/var/www/html \
+				--role=author --path=/var/www/wordpress \
 				--allow-root
 fi
 
