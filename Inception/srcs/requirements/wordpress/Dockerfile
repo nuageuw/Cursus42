@@ -1,30 +1,50 @@
-# Use Debian Buster as the base image
-FROM debian:buster
+FROM debian:bullseye
 
-# Install PHP-FPM and other dependencies
-RUN apt-get update && \
-    apt-get install -y php-fpm php-mysql net-tools mariadb-client gettext moreutils curl && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y \
+  wget \
+  php7.4-fpm \
+  php7.4 \
+  php7.4-mysql \
+  php7.4-fpm \
+  php7.4-curl \
+  php7.4-gd \
+  php7.4-intl \
+  php7.4-mbstring \
+  php7.4-soap \
+  php7.4-xml \
+  php7.4-xmlrpc \
+  php7.4-zip \
+  mariadb-server \
+  mariadb-client \
+  && rm -rf /var/lib/apt/lists/*
 
-# Install WP-CLI
-RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x /usr/local/bin/wp
+RUN mkdir /app
+WORKDIR /app
 
-# Create directory for PHP-FPM socket
-RUN mkdir -p /run/php && chown www-data:www-data /run/php
+RUN groupadd wordpress && useradd -g wordpress wordpress
 
-# Create directory for WordPress installation and set permissions
-RUN mkdir -p /var/www/html && chown www-data:www-data /var/www/html
+RUN wget https://github.com/wp-cli/wp-cli/releases/download/v2.8.1/wp-cli-2.8.1.phar \
+  && mv wp-cli-2.8.1.phar wp-cli.phar \
+  && chmod +x wp-cli.phar \
+  && mv wp-cli.phar /bin/wp
 
-# Expose port for PHP-FPM
-EXPOSE 9000
+ADD tools/run.sh /
+RUN chmod +x /run.sh
 
-# Copy the initialization script and entrypoint script
-COPY tools/wordpress_init.sh /
-COPY tools/wordpress.sh /
+COPY tools/php-fpm.conf /etc/php/7.4/fpm/
+RUN ln -s $(which php-fpm7.4) /bin/php-fpm \
+  && mkdir -p /run/php/ \
+  && chown -R wordpress:wordpress /run/php/ \
+  && mkdir -p /usr/logs/php-fpm \
+  && chown -R wordpress:wordpress /usr/logs/php-fpm \
+  && chmod -R 755 /usr/logs/php-fpm
 
-# Make scripts executable
-RUN chmod +x /wordpress_init.sh /wordpress.sh
+RUN wget https://wordpress.org/wordpress-6.2.2.tar.gz \
+  && tar -zxvf wordpress-6.2.2.tar.gz \
+  && mv wordpress/* . \
+  && rm -rf wordpress wordpress-6.2.2.tar.gz \
+  && chown -R wordpress:wordpress /app \
+  && chmod -R 755 /app
 
-# Start WordPress initialization script as entrypoint
-ENTRYPOINT ["/wordpress.sh"]
+USER wordpress:wordpress
+ENTRYPOINT ["/run.sh"]

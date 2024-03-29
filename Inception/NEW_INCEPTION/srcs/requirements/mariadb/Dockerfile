@@ -1,11 +1,11 @@
-FROM debian:buster
+FROM debian:bullseye
 
-RUN apt update -y
-RUN apt upgrade -y
-RUN apt-get install mariadb-server -y
+RUN apt-get update && apt-get install -y \
+    mariadb-server \
+  && rm -rf /var/lib/apt/lists/*
 
-COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
+COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY tools/config.sh /
+RUN chmod +x /config.sh
 
-COPY tools/config.sh /usr/local/bin/config.sh
-RUN chmod +x /usr/local/bin/config.sh
-CMD ["/usr/local/bin/config.sh"]
+ENTRYPOINT ["bash", "config.sh"]

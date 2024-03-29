@@ -1,39 +1,35 @@
-# FROM debian:buster
+FROM debian:bullseye
 
-# RUN apt update -y
-# RUN apt upgrade -y
-# RUN apt install wget -y
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install wget -y
 
-# RUN apt-get install -y php7.3\
-# 	                php-fpm\
-# 	                php-mysql\
-# 	                mariadb-client \
-# 					sendmail
+RUN apt-get install -y php \
+                    php php-fpm\
+	                php-fpm \
+	                php-mysql \
+                    mariadb-server\
+	                mariadb-client \
+                    && rm -rf /var/lib/apt/lists/*
 
-# RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www
-# RUN cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz && rm wordpress-6.0-fr_FR.tar.gz
+RUN mkdir /app
+WORKDIR /app
+RUN groupadd wordpress && useradd -g wordpress wordpress
 
-# RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-# RUN chmod +x wp-cli.phar
-# RUN mv wp-cli.phar /usr/local/bin/wp
-# # RUN chown -R root:root /var/www/var/www/html
-# EXPOSE 9000
-# COPY conf/entrypoint.sh /usr/local/bin/entrypoint.sh
-# COPY conf/wp-config.php /var/www/html/wp-config.php
-# RUN chmod +x /usr/local/bin/entrypoint.sh
-# ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-# CMD ["/usr/sbin/php-fpm7.3", "-F"]
+RUN wget https://github.com/wp-cli/wp-cli/releases/download/v2.8.1/wp-cli-2.8.1.phar \
+  && mv wp-cli-2.8.1.phar wp-cli.phar \
+  && chmod +x wp-cli.phar \
+  && mv wp-cli.phar /bin/wp
 
-FROM debian:buster
-
-RUN apt-get update && apt-get install -y php-fpm php-mysql curl net-tools mariadb-client && \
-    mkdir /run/php && \
-    sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/fpm/php.ini && \
-    sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf && \
-	rm -rf /var/lib/apt/lists/*
-
-COPY /conf/entrypoint.sh /entrypoint.sh
-
+RUN wget https://wordpress.org/wordpress-6.2.2.tar.gz \
+  && tar -zxvf wordpress-6.2.2.tar.gz \
+  && mv wordpress/* . \
+  && rm -rf wordpress wordpress-6.2.2.tar.gz \
+  && chown -R wordpress:wordpress /app \
+  && chmod -R 755 /app
+EXPOSE 9000
+COPY conf/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT [ "/entrypoint.sh" ]
+USER wordpress:wordpress
+# CMD ["/usr/sbin/php-fpm7.3", "-F"]
+ENTRYPOINT ["/entrypoint.sh"]

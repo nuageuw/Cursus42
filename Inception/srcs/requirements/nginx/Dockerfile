@@ -1,25 +1,18 @@
-FROM debian:buster
+FROM debian:bullseye
 
-# Install NGINX and SSL certificates
-RUN apt-get update && \
-    apt-get install -y nginx openssl && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+  nginx \
+  openssl \
+  && rm -rf /var/lib/apt/lists/*
 
-# Create directory for SSL certificates
-RUN mkdir -p /etc/nginx/ssl
+RUN rm /etc/nginx/sites-enabled/default
+COPY conf/nginx.conf /etc/nginx/sites-enabled/
 
-# Generate SSL certificates
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -keyout /etc/nginx/ssl/aburnott.key \
-    -out /etc/nginx/ssl/aburnott.crt \
-    -subj "/CN=aburnott"
+RUN mkdir -p /etc/nginx/ssl && openssl req -x509 \
+            -sha256 -days 356 \
+            -nodes \
+            -newkey rsa:2048 \
+            -subj "/CN=aburnott.42.fr/C=FR/L=Paris/O=aburnott@42" \
+            -keyout /etc/nginx/ssl/inception.key -out /etc/nginx/ssl/inception.crt
 
-# Copy NGINX configuration
-RUN mkdir -p /run/nginx
-COPY conf/nginx.conf /etc/nginx/nginx.conf
-
-# Expose ports
-EXPOSE 443
-
-# Start NGINX
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

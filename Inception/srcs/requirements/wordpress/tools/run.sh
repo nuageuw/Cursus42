@@ -1,5 +1,4 @@
 #!/bin/sh
-sleep 10;
 
 check_db () {
 	echo "[INFO] Check db connection"

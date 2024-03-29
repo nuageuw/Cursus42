@@ -1,15 +1,11 @@
-FROM debian:buster
+FROM debian:bullseye
 
-# Install MariaDB client
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y mariadb-server moreutils gettext && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    mariadb-server \
+  && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /run/mysqld
-RUN chown -R mysql:mysql /run/mysqld
-
-# Set up entrypoint
+COPY tools/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY tools/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+
+ENTRYPOINT ["bash", "entrypoint.sh"]
