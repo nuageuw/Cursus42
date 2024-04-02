@@ -17,12 +17,12 @@ run_insatll () {
 
 
 	echo "[INFO] Create wordpress config"
-	wp config create --dbname=$SQL_DATABASE --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=$MARIADB_HOST
+	wp config create --allow-root --dbname=$SQL_DATABASE --dbuser=$SQL_USER --dbpass=$SQL_PASSWORD --dbhost=$MARIADB_HOST
 
 	check_db;
 
 	echo "[INFO] Install and create admin user"
-	wp core install --url=$WORDPRESS_URL --title="$WORDPRESS_TITLE" --admin_user=$WORDPRESS_ROOT_USER --admin_password=$WORDPRESS_ROOT_PASSWORD --admin_email=$WORDPRESS_ROOT_EMAIL
+	wp core install --allow-root --url=$WORDPRESS_URL --title="$WORDPRESS_TITLE" --admin_user=$WORDPRESS_ROOT_USER --admin_password=$WORDPRESS_ROOT_PASSWORD --admin_email=$WORDPRESS_ROOT_EMAIL
 
 	if [ $? -eq 0 ]; then
 		echo "[INFO] WP install successful"
@@ -32,7 +32,7 @@ run_insatll () {
 	fi
 
 	echo "[INFO] Create $WORDPRESS_USER user"
-	wp user create $WORDPRESS_USER $WORDPRESS_USER_EMAIL --user_pass=$WORDPRESS_USER_PASSWORD --display_name=$WORDPRESS_USER
+	wp user create $WORDPRESS_USER $WORDPRESS_USER_EMAIL --allow-root --user_pass=$WORDPRESS_USER_PASSWORD --display_name=$WORDPRESS_USER
 
 	if [ $? -eq 0 ]; then
 		echo "[INFO] $WORDPRESS_USER created"
@@ -53,5 +53,4 @@ else
 fi
 
 echo "[INFO] Starting php-fpm"
-
 php-fpm -F

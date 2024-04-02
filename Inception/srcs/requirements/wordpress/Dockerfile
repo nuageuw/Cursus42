@@ -23,8 +23,7 @@ WORKDIR /app
 
 RUN groupadd wordpress && useradd -g wordpress wordpress
 
-RUN wget https://github.com/wp-cli/wp-cli/releases/download/v2.8.1/wp-cli-2.8.1.phar \
-  && mv wp-cli-2.8.1.phar wp-cli.phar \
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   && chmod +x wp-cli.phar \
   && mv wp-cli.phar /bin/wp
 
