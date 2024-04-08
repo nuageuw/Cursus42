@@ -1,5 +1,5 @@
 # Define variables
-COMPOSE=docker compose -f srcs/docker-compose.yml
+COMPOSE=sudo docker compose -f srcs/docker-compose.yml
 BUILD=$(COMPOSE) build --parallel --no-cache
 UP=$(COMPOSE) up -d
 DOWN=$(COMPOSE) down
