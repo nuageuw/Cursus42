@@ -13,7 +13,7 @@ check_db () {
 
 }
 
-run_insatll () {
+run_install () {
 
 
 	echo "[INFO] Create wordpress config"
@@ -49,7 +49,7 @@ if [ $? -eq 0 ]; then
 	check_db;
 else
 	echo "[INFO] WP not install"
-	run_insatll;
+	run_install;
 fi
 
 echo "[INFO] Starting php-fpm"
