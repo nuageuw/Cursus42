@@ -1,0 +1,37 @@
+.page-game {
+	margin: auto;
+	margin-top: 5rem;
+	text-align: center;
+	background: transparent;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 50rem;
+	padding-bottom: 10rem;
+}
+
+.page-game .btn {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 5rem;
+
+}
+
+.page-game button {
+	width: 17rem;
+	height: 4rem;
+	background-color: #623f91;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
+	padding: .5rem 7%;
+	border-radius: 20px;
+	border: 2px solid rgba(255, 255, 255, .2);
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.page-game canvas {
+	margin-bottom: 5rem;
+}

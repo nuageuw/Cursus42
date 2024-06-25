@@ -1,0 +1,263 @@
+.tournament {
+    color: #fff;
+}
+
+.add-event {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #6434a3;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.add-event i {
+    font-size: 30px;
+	line-height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.add-event .button-text {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+.add-event:hover {
+    width: 180px;
+    background-color: #542b87;
+}
+
+.add-event:hover i {
+    transform: translateX(-60px);
+}
+
+.add-event:hover .button-text {
+    opacity: 1;
+    transform: translateX(-140px);
+}
+
+
+.tournois-container {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.tournois-info {
+    position: relative;
+    width: calc(33.33% - 20px);
+    height: 20vh;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease-in-out;
+    background: linear-gradient(to right, rgba(71, 51, 97, 0.9), rgba(71, 51, 97, 0));
+}
+
+.tournois-info img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.tournois-details {
+    position: relative;
+    z-index: 2;
+    padding: 15px;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.tournois-details p {
+    margin: 10px 0;
+    transition: opacity 0.3s ease-in-out;
+    color: #fff;
+}
+
+.tournois-details .tournament-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #9662da;
+}
+
+.tournois-details .tournament-time {
+    align-self: flex-start;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.tournois-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(71, 51, 97, 0.9) 50%, rgba(71, 51, 97, 0) 100%);
+    z-index: 1;
+}
+
+.inscription-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    text-decoration: none;
+    background-color: #6434a3;
+    color: #fff;
+    padding: 15px 22px;
+    border-radius: 5px;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.inscription-button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.inscription-button a:hover {
+    color: #9662da;
+    text-decoration: none;
+}
+.tournois-info:hover {
+    background-color: #7b1fa2;
+}
+
+.tournois-info:hover .tournois-details p {
+    opacity: 0;
+}
+
+.tournois-info:hover .inscription-button {
+    color: #fff;
+    text-decoration: none;
+    opacity: 1;
+}
+
+
+.modal-backdrop-tournament {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.modal-box {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #2c1a44;
+    height: auto;
+    width: 400px;
+    text-align: center;
+    overflow: hidden;
+    transition: width 0.5s ease;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+.modal-box h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.eventForm .containForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.eventForm .containForm div {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.eventForm .containForm p {
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: left;
+}
+
+.eventForm .text {
+    width: 100%;
+}
+
+.eventForm input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-div {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #6434a3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #542b87;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.close-modal:hover {
+    color: #ccc;
+}

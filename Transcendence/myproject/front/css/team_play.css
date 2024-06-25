@@ -1,0 +1,59 @@
+.bracket {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    margin: 0;
+  }
+  .round {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+  }
+  .match {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  .win-color {
+    background-color: #473361;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 190px;
+    color: #fff;
+  }
+
+  .lose-color {
+    background-color: #221733;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 190px;
+    color: #7a7a7a;
+  }
+  .connector {
+    width: 2px;
+    height: 10px;
+    background: #000;
+    margin: 0 auto;
+  }
+  .winner-box {
+    background-color: #ffd700;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 190px;
+    margin: 0 auto;
+    margin-top: -30px;
+  }
+
+  .tournois-play {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

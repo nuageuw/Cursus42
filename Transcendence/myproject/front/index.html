@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <!-- JS SCRIPT ALL INCLUDE IN THE INDEX FILE -->
+    <script src="/js/index.js"></script>
+	<script src="/js/pong.js"></script>
+	<script src="/js/tournament.js"></script>
+	<script src="/js/login.js"></script>
+	<script src="/js/logout.js"></script>
+	<script src="/js/tour_details.js"></script>
+	<script src="/js/teams_play.js"></script>
+	<script src="/js/pong1vs1.js"></script>
+	<script src="/js/user_info.js"></script>
+    <script src="/js/profil.js"></script>
+	<script src="/js/chat.js"></script>
+	<script src="/js/notifications.js"></script>
+    <!-- CSS INCLUDES -->
+    <link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/pong.css">
+	<link rel="stylesheet" href="/css/tournament.css">
+	<link rel="stylesheet" href="/css/user.css">
+	<link rel="stylesheet" href="/css/profil.css">
+	<link rel="stylesheet" href="/css/login.css">
+	<link rel="stylesheet" href="/css/home.css">
+	<link rel="stylesheet" href="/css/chat.css">
+	<link rel="stylesheet" href="/css/team_play.css">
+	<link rel="stylesheet" href="/css/details.css">
+	<link rel="stylesheet" href="/css/404.css">
+
+    <!-- Include Bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Three JS dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="index-page" id="body" style="background: #150c21;">
+	<div class="loader" id="loader"></div>
+	<div class="login-container hidden" id="login-container"></div>
+	<div class="core hidden" id="core">
+		<header>
+			<div class="logo">
+				<div class="logo-svg">
+					<a href="/#"><svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 -200 960 960"><path fill="#ffffff" d="M32 412.6h330.1V578h164.7V279.1H197.3L526.8-51.1H362.1L32 279.1zM597.9 114.2 762.7-51.1H597.9zM762.7 114.2 597.9 279.1v164.8h164.8V279.1L928 114.2V-51.1H762.7z"/><path fill="#ffffff" d="M928 279.1 762.7 443.9H928z"/></svg></a>
+				</div>	
+			</div>
+			<div class="rest-header">
+				<div class="icons">
+					<i onclick="toggleSearch()" class='bx bx-search-alt-2' id="search-icon"></i>
+				</div>
+				<div class="notification-container" id="notifications-containers"></div>
+				<form class="search-form" method="get">
+					<input type="search" name="query" id="search-box" placeholder="search a user">
+				</form>
+				<div id="search-results" class="search-results">
+				</div> 
+				<nav class="navbarr">
+					<ul>
+						<div class="user-info">
+							<img src="path/to/profile-pic.jpg" alt="Profile Picture" class="profile-pic" id="profile-pic">
+							<a href="#profile/" id="name"></a>
+							<div class="dropdown-menu hidden" id="dropdown-menu">
+								<a href="#profile/">Profile</a>
+								<a href="#" onclick="logout()">Logout</a>
+							</div>
+						</div>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<nav class="navbar-left" id="navbar-left">
+			<div id="user-list"></div>
+			<ul class="element">
+				<li><a href="#tournament" class="nav-item" id="hometitle">
+					<i class='bx bx-group'></i>
+				</a></li>
+				<li> <a href="#">
+
+				</a></li>
+				<li> <a href="#">
+				</a></li>
+			</ul>
+		</nav> 
+		<div class="app" id="app"></div>
+		<footer class="footer">
+			<p>© 2024 Pong Em-Alex-Vic - Tous droits réservés</p>
+		</footer>
+	</div>
+<script src="/js/router.js" defer></script>
+</body>
+</html> 

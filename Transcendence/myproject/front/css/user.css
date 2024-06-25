@@ -1,0 +1,129 @@
+.container_profil .add {
+    position: absolute;
+	display: flex;
+	top: 15%;
+	right: 10%;
+	width: 10%;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	background: #6434a3;
+	border: 2px solid rgba(255, 255, 255, .2);
+	backdrop-filter: blur(20px);
+	border-radius: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+	font-size: 1.2rem;
+	color: #fff;
+}
+
+.add:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+}
+
+.container_profil .message {
+	position: absolute;
+	display: flex;
+	top: 20%;
+	right: 10%;
+	width: 10%;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	background: #6434a3;
+	border: 2px solid rgba(255, 255, 255, .2);
+	backdrop-filter: blur(20px);
+	border-radius: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+	font-size: 1.2rem;
+	color: #fff;
+}
+
+.container .profil {
+    display: flex;
+    gap: .5rem;
+}
+
+.container h1 {
+    margin-top: 2rem;
+    padding-right: 60%;
+    font-size: 2rem;
+}
+
+.info {
+    display: flex;
+    gap: 1rem;
+}
+
+.details {
+    display: flex;
+    gap: 1rem;
+    margin: auto;
+	text-align: center;
+	align-items: center;
+    padding: 1rem 4%;
+
+}
+
+.container2 {
+	width: 80%;
+    margin-top: 3rem;
+	margin: auto;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2rem;
+	background: transparent;
+	padding: 1rem 4%;
+	font-size: 1.2rem;
+	color: #9563d6;
+}
+
+.container2 .tournament {
+    width: 38rem;
+	text-align: left;
+	background: #473361;
+	backdrop-filter: blur(20px);
+	border-radius: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+	padding: .7rem 7%;
+	font-size: 1rem;
+	gap: 1.7rem;
+	color: #fff;
+}
+
+.tournament .win {
+	display: flex;
+	gap: .5rem;
+}
+
+.win i {
+	color: #e9b408;
+}
+
+#eventFormContainer .form {
+	display: flex;
+	gap: 1rem;
+	width: 30rem;
+	height: 7rem;
+	margin: auto;
+	padding: 2rem 3%;
+	background: #6434a3;
+	box-shadow: 0 0 10px 0px rgba(0, 0, 0, .1);
+	border-radius: 20px;
+}
+
+.form button {
+	width: 50%;
+	margin: auto;
+	padding: .5rem 3%;
+	background: #9563d6;
+	border: none;
+	outline: none;
+	border-radius: 40px;
+	border: 2px solid rgba(255, 255, 255, .2);
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	cursor: pointer;
+	font-size: 16px;
+	color: #fff;
+	font-weight: 600;
+}

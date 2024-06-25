@@ -1,0 +1,45 @@
+services:
+  backend:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    entrypoint: ["sh", "/app/entrypoint.sh"]
+    restart: on-failure:5
+    networks:
+      - transcendence
+  db:
+    image: postgres
+    restart: on-failure:5
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    networks:
+      - transcendence
+
+  nginx:
+    container_name: nginx
+    restart: on-failure:5
+    build:
+      context: ./myproject/nginx/
+      dockerfile: Dockerfile
+    ports:
+      - "8443:443"
+    volumes:
+      - ./myproject/front/:/etc/frontend
+      - ./myproject/front/media/:/etc/frontend/media
+    depends_on:
+      - db
+      - backend
+    networks:
+      - transcendence
+
+networks:
+  transcendence:
+    driver: bridge

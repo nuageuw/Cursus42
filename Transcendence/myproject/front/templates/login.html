@@ -1,0 +1,82 @@
+
+<title>Transcendence | Login</title>
+<div class="login-handler">
+    <div class="svg-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 -200 960 960"><path fill="#ffffff" d="M32 412.6h330.1V578h164.7V279.1H197.3L526.8-51.1H362.1L32 279.1zM597.9 114.2 762.7-51.1H597.9zM762.7 114.2 597.9 279.1v164.8h164.8V279.1L928 114.2V-51.1H762.7z"/><path fill="#ffffff" d="M928 279.1 762.7 443.9H928z"/></svg>
+    </div>
+    <div class="auth-wrapper">
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <div id="tab-slider"></div>
+                <button id="login-tab" class="active" onclick="showLogin()" style="color: rgb(255, 255, 255);"><b>Login</b></button>
+                <button id="register-tab" onclick="showRegister()" style="color: rgb(255, 255, 255);"><b>Register</b></button>
+            </div>
+            <div class="auth-forms">
+                <div class="loader-handler"></div>
+                <div id="login" class="auth-form active">
+                    <form id="login-form">
+                        <label for="login-username">Email:</label>
+                        <input type="text" id="login-username" name="username" required><br>
+                        <label for="login-password">Password:</label>
+                        <input type="password" id="login-password" name="password" required><br>
+                        <button id="login-button" type="button" onclick="loginUser()">Login</button>
+                    </form>
+                    <button onclick="window.location.href = SigninURL()" id="signin-btn" class="rounded mb-4 bn">Signin With 42</button>
+                </div>
+                <div id="register" class="auth-form">
+                    <form id="register-form">
+                        <label for="register-username">Username:</label>
+                        <input type="text" id="register-username" name="username" required><br>
+                        <label for="register-email">Email:</label>
+                        <input type="email" id="register-email" name="email" required><br>
+                        <label for="register-password">Password:</label>
+                        <input type="password" id="register-password" name="password" required><br>
+                        <label for="conf-password">Confirm Password:</label>
+                        <input type="password" id="conf-password" name="conf-password" required><br>
+                        <button type="button" onclick="registerUser()">Register</button>
+                    </form>
+                </div>
+                <div id="2fa-verification" class="2fa-verification hidden">
+                    <h1>2FA Verification</h1>
+                        <form id="send2FAForm">
+                            <input id="otpVerifInput" type="text" placeholder="Enter 2FA code">
+                            <br>
+                            <button type="submit" onclick="send2FA()">Send</button>
+                        </form>
+                </div>
+                <div id="2fa-ask" class="auth-form hidden">
+                    <h1 id="welcome-heading">Welcome, <span id="username-placeholder"></span></h1>
+                    <h2>Do you want to activate 2FA?</h2>
+                    <div class="fa-setup-buttons">
+                        <form id="activate2FAForm">
+                            <button type="submit" onclick="setup2FA()" class="auth-button-login">Activate with 2FA app</button>
+                        </form>
+                        <button type="button" onclick="skip2FA()" class="skip-button">No Thanks</button>
+                    </div>
+                </div>
+                <div id="verificationResult" class="hidden"></div>
+                <div id="2fa-steps" class="2fa-steps hidden">
+                    <h1>2FA Activation</h1>
+                    <div class="fa-setup-grid">
+                        <div class="fa-setup-text">
+                            <p>1. Download an 2FA app (Google Authenticator, Authy, ...)</p>
+                            <p>2. Scan the QRCode with the app.</p>
+                            <p>3. Enter the verification code provided by the app.</p>
+                            <br>
+                            <form id="test2FAForm">
+                                <input id="otpCodeInput" type="text" placeholder="Enter 2FA code">
+                                <br>
+                                <button type="submit" onclick="test_2fa()">Enable 2FA</button>
+                            </form>
+                        </div>
+                        <div id="qrCodeContainer" class="step-qrcode">
+                        </div>
+                    </div>
+                </div>
+                <div id="photo-setup" class="photo-setup hidden"></div>
+            </div>
+        </div>
+    </div>
+    <div id="login-notifications-containers" class="login-notifications-containers"></div>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+</div>
